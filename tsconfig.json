@@ -2,6 +2,7 @@
     "compilerOptions": {
         "target": "ES2022",
         "module": "CommonJS",
+        "skipLibCheck": true,
         "sourceMap": true,
         "removeComments": true,
         "strict": true,
@@ -18,5 +19,7 @@
         "experimentalDecorators": true,
         "moduleResolution": "Node"
     },
-    "exclude": ["node_modules"]
+    "exclude": [
+        "node_modules"
+    ]
 }
