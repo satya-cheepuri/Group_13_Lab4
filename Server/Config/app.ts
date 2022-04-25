@@ -59,7 +59,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../Client')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
-
+app.use(express.static(path.join(__dirname,'../Views/Assets/Images')));
+console.log(__dirname);
 app.use(cors()); // adds CORS to the config
 
 // setup express session
@@ -126,6 +127,15 @@ app.use(function(err: createError.HttpError, req: express.Request,
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.use(function(req, res, next) { 
+    if(!req.user){
+// if user is not logged-in redirect back to login page //
+        res.redirect('/');
+    }   else{
+        next();
+    }
 });
 
 export default app;

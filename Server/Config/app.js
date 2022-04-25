@@ -63,6 +63,8 @@ app.use(express_1.default.urlencoded({ extended: false }));
 app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.static(path_1.default.join(__dirname, '../../Client')));
 app.use(express_1.default.static(path_1.default.join(__dirname, '../../node_modules')));
+app.use(express_1.default.static(path_1.default.join(__dirname, '../Views/Assets/Images')));
+console.log(__dirname);
 app.use((0, cors_1.default)());
 app.use((0, express_session_1.default)({
     secret: DBConfig.SessionSecret,
@@ -100,6 +102,14 @@ app.use(function (err, req, res, next) {
     res.locals.error = req.app.get('env') === 'development' ? err : {};
     res.status(err.status || 500);
     res.render('error');
+});
+app.use(function (req, res, next) {
+    if (!req.user) {
+        res.redirect('/');
+    }
+    else {
+        next();
+    }
 });
 exports.default = app;
 //# sourceMappingURL=app.js.map

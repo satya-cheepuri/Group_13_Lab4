@@ -13,14 +13,16 @@
     }
     function DisplayHome() {
         console.log("Home Page");
-        $("#AboutUsButton").on("click", () => {
-            location.href = "/about";
-        });
-        $("main").append(`<p id="MainParagraph" class="mt-3">This is the Main Paragraph</p>`);
+        $("main").append(`<p id="MainParagraph" class="mt-3">We are product development and software development consulting company.</p>`);
         $("main").append(`
         <article>
-            <p id="ArticleParagraph" class="mt-3">This is the Article Paragraph</p>
-            </article>`);
+        <p id="ArticleParagraph" class="mt-3"> We provide software development
+        services to customers.</p>
+        <p>We are also working on a software product. Out mission is to integrate technology into healthcare to make meaningful impact in the community</p>
+        </article>`);
+         $("#AboutUsButton").on("click", () => {
+            location.href = "/about";
+        });
     }
     function DisplayAboutPage() {
         console.log("About Us Page");
